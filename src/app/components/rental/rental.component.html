@@ -1,0 +1,21 @@
+<div *ngIf="dataLoaded==false" class="spinner-border text-danger" role="status"> <!--dataLoaded, yine diğer sayfadan geliyor-->
+    <span class="visually-hidden">Loading...</span>
+</div>  
+<table *ngIf="dataLoaded==true" class="table">
+    <thead>
+        <tr>
+            <th>Kiralama id</th>
+            <th>Marka adı</th>
+            <th>Müşteri adı</th>
+            <th>Kiralama tarihi</th>
+            <th>Geri dönüş tarihi</th>
+        </tr>
+    </thead>
+    <tr *ngFor="let rental of rentals">
+        <td>{{rental.rentalId}}</td>
+        <td>{{rental.brandName}}</td>
+        <td>{{rental.firstName}}</td>
+        <td>{{rental.rentDate}}</td>
+        <td>{{rental.returnDate}}</td>
+    </tr>
+</table>

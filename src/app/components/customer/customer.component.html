@@ -1,0 +1,17 @@
+<div *ngIf="dataLoaded==false" class="spinner-border text-danger" role="status"> <!--dataLoaded, yine diğer sayfadan geliyor-->
+    <span class="visually-hidden">Loading...</span>
+</div>  
+<table *ngIf="dataLoaded==true" class="table">
+    <thead>
+        <tr>
+            <th>Müşteri id</th>
+            <th>Kullanıcı id</th>
+            <th>Şirket adı</th>
+        </tr>
+    </thead>
+    <tr *ngFor="let customer of customers">
+        <td>{{customer.customerId}}</td>
+        <td>{{customer.userId}}</td>
+        <td>{{customer.companyName}}</td>
+    </tr>
+</table>
