@@ -1,0 +1,4 @@
+<ul class="nav-item" *ngFor="let cartItem of cartItems">
+    <span class="badge text-bg-secondary">{{cartItem.quantity}}</span>{{cartItem.car.description}}
+</ul>
+<button type="button" class="btn btn-warning" routerLink="/payment">Öde</button>

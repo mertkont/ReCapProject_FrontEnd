@@ -1,3 +1,11 @@
+<div class="mb-3">
+    <label for="filterText" class="form-label">Ürün bul</label>
+    <input type="text" [(ngModel)]="filterText" class="form-control" id="filterText" placeholder="ürün...">
+</div>
+<div *ngIf ="filterText.length>2" class="alert alert-warning">
+    {{filterText}} aradınız.
+</div>
+
 <div *ngIf="dataLoaded==false" class="spinner-border text-danger" role="status"> <!--dataLoaded, yine diğer sayfadan geliyor-->
     <span class="visually-hidden">Loading...</span>
 </div>  
@@ -9,15 +17,31 @@
             <th>Renk adı</th>
             <th>Model yılı</th>
             <th>Günlük fiyat</th>
+            <th>KDV'li fiyat</th>
             <th>Açıklama</th>
+            <th></th>
+            <th></th>
         </tr>
     </thead>
-    <tr (click)="setCurrentCar(car)" routerLink="/cars/cardetails/{{car.id}}" *ngFor="let car of cars">
-        <td>{{car.id}}</td>
-        <td>{{car.brandName}}</td>
-        <td>{{car.colorName}}</td>
-        <td>{{car.modelYear}}</td>
-        <td>{{car.dailyPrice}}</td>
-        <td>{{car.description}}</td>
-    </tr>
+    <tbody>
+      <tr *ngFor="let car of cars  | filterPipe : filterText">
+          <td (click)="setCurrentCar(car)" routerLink="/cars/cardetails/{{car.id}}">{{car.id}}</td>
+          <td (click)="setCurrentCar(car)" routerLink="/cars/cardetails/{{car.id}}">{{car.brandName}}</td>
+          <td>{{car.colorName}}</td>
+          <td>{{car.modelYear}}</td>
+          <td>{{car.dailyPrice}}</td>
+          <td>{{car.dailyPrice | vatAdded:18 | currency}}</td>
+          <td>{{car.description}}</td>
+          <td><button (click)="addToCart(car)" type="button" class="btn btn-success btn-xs">Kirala</button></td>
+          <td>
+            <div class="btn-group">
+              <button type="button" class="btn btn-danger dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">Bilgiler</button>
+                <ul class="dropdown-menu">
+                  <li><a (click)="getCarsByBrandId(car.brandId)" class="dropdown-item">{{car.brandName}}</a></li>
+                  <li><a (click)="getCarsByColorId(car.colorId)" routerLink="/cars/colors/{{car.colorId}}" class="dropdown-item">{{car.colorName}}</a></li>
+                </ul>
+            </div>
+          </td>
+      </tr>
+    </tbody>
 </table>

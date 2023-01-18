@@ -1,9 +1,17 @@
+<div class="mb-3">
+  <label for="filterText" class="form-label">Ürün bul</label>
+  <input type="text" [(ngModel)]="filterText" class="form-control" id="filterText" placeholder="ürün...">
+</div>
+<div *ngIf ="filterText.length>2" class="alert alert-warning">
+  {{filterText}} aradınız.
+</div>
+
 <ul class="list-group">
   <li [class]="getAllBrandClass()" routerLink="/cars">Tüm ürünler</li>
   <!--burdaki  [] kodu ile metot çağırma işlemi yapabiliyoruz.-->
   <li (click)="setCurrentBrand(brand)"
   routerLink="/cars/brands/{{brand.brandId}}"
-  *ngFor="let brand of brands" [class]="getCurrentBrandClass(brand)">{{brand.brandName}}
+  *ngFor="let brand of brands | filterPipeBrand : filterText" [class]="getCurrentBrandClass(brand)">{{brand.brandName}}
   </li>
 </ul>
 

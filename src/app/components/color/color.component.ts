@@ -11,6 +11,7 @@ export class ColorComponent {
   colors:Color[] = [];
   currentColor:Color;
   dataLoaded = false;
+  filterText="";
 
   constructor(private colorService:ColorService) {}
 
