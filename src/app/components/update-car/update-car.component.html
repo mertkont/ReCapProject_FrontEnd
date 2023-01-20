@@ -1,0 +1,8 @@
+<form class="form-group" [formGroup]="car" (ngSubmit)="UpdataData()">
+    <input type="number" id="brandId" name="brandId"  class="form-control" formControlName="brandId">
+    <input type="number" id="colorId" name="colorId"  class="form-control" formControlName="colorId">
+    <input type="number" id="modelYear" name="modelYear"  class="form-control" formControlName="modelYear">
+    <input type="number" id="dailyPrice" name="dailyPrice"  class="form-control" formControlName="dailyPrice">
+    <input type="text" id="description" name="description"  class="form-control" formControlName="description">
+    <button type="submit">Güncelle</button>
+</form>

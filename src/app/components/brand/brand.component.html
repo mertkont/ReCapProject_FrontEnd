@@ -16,3 +16,23 @@
 </ul>
 
 <h5 *ngIf="currentBrand">{{currentBrand.brandName}} seçtiniz</h5>
+
+<div *ngIf="dataLoaded==false" class="spinner-border text-danger" role="status"> <!--dataLoaded, yine diğer sayfadan geliyor-->
+  <span class="visually-hidden">Loading...</span>
+</div>  
+<table *ngIf="dataLoaded==true" class="table">
+  <thead>
+      <tr>
+          <th>Marka id</th>
+          <th>Marka adı</th>
+          <th></th>
+          <th></th>
+      </tr>
+  </thead>
+  <tr *ngFor="let brand of brands">
+      <td>{{brand.brandId}}</td>
+      <td>{{brand.brandName}}</td>
+      <button routerLink="/brand-add" type="button" class="btn btn-info">Yeni Ekle</button>
+      <button routerLink="/brands/update/{{brand.brandId}}" type="button" class="btn btn-info">Güncelle</button>
+  </tr>
+</table>
