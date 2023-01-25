@@ -15,6 +15,7 @@ import { NaviComponent } from './components/navi/navi.component';
 import { CarDetailComponent } from './components/car-detail/car-detail.component';
 import { VatAddedPipe } from './components/pipes/vat-added.pipe';
 import { FilterPipePipe } from './components/pipes/filter-pipe.pipe';
+import { HighlightDirective } from './directives/app-highlight.directive';
 
 import { Toast, ToastrModule } from 'ngx-toastr';
 import { FilterPipeBrandPipe } from './components/pipes/filter-pipe-brand.pipe';
@@ -34,6 +35,7 @@ import { AuthInterceptor } from './interceptors/auth.interceptor';
 import { RegisterInterceptor } from './interceptors/register.interceptor';
 import { PaymentSummaryComponent } from './components/payment-summary/payment-summary.component';
 import { UserComponent } from './components/user/user.component';
+import { CustomFormControlComponent } from './components/custom-form-control/custom-form-control.component';
 
 @NgModule({
   declarations: [
@@ -62,6 +64,8 @@ import { UserComponent } from './components/user/user.component';
     LoginComponent,
     PaymentSummaryComponent,
     UserComponent,
+    HighlightDirective,
+    CustomFormControlComponent
   ],
   imports: [
     BrowserModule,
