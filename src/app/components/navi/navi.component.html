@@ -13,10 +13,16 @@
             <a class="nav-link" href="#">Link</a>
           </li>
           <app-cart-summary></app-cart-summary>
+          <app-payment-summary></app-payment-summary>
           <li class="nav-item">
-            <a class="nav-link disabled">Disabled</a>
+            <a class="nav-link disabled">Devre Dışı</a>
           </li>
         </ul>
+        <p class="text-start">Your findex is: {{findex}}..</p>
+        <p class="text-start" *ngIf="tokenn()==true">..Hoşgeldiniz!</p>
+        <button type="button" class="btn btn-success" routerLink="/user" *ngIf="tokenn()==true">Profil</button>
+        <button type="button" class="btn btn-danger" routerLink="/register" *ngIf="tokenn()==false">Register</button>
+        <button type="button" class="btn btn-success" routerLink="/login" *ngIf="tokenn()==false">Login</button>
         <form class="d-flex" role="search">
           <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
           <button class="btn btn-outline-success" type="submit">Search</button>

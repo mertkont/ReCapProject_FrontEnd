@@ -18,6 +18,7 @@ export class CarComponent implements OnInit {
   currentCar:Car;
   dataLoaded = false;
   filterText="";
+  findex = 300;
 
   constructor(private carService:CarService, private activatedRoute:ActivatedRoute, private toastrService:ToastrService, private cartService:CartService) {}
 

@@ -2,15 +2,35 @@
     <div class="col-md-12">
         <div class="card">
             <div class="card-header"><h5 class="title">Ödeme</h5></div>
+            <p class="text-start"></p>
             <div class="card-body">
                 <form>
-                    <input class="form-control" type="text" placeholder="Kart üzerindeki isim" aria-label="Kart üzerindeki isim">
-                    <input class="form-control" type="number" placeholder="1234-1234-1234-1234" aria-label="1234-1234-1234-1234">
-                    <input class="form-control" type="number" placeholder="***" aria-label="***">
-               </form>
+                    <input formControlName="cardname" id="cardname" class="form-control" type="text" placeholder="Kart üzerindeki isim" aria-label="Kart üzerindeki isim">
+                    <input formControlName="cardnumber" id="cardnumber" class="form-control" type="number" placeholder="1234-1234-1234-1234" aria-label="1234-1234-1234-1234">
+                    <input formControlName="cvv" id="cvv" class="form-control" type="number" placeholder="***" aria-label="***">
+                </form>
             </div>
             <div class="card-foter">
-                <button type="button" class="btn btn-primary">Öde</button>
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                    Öde
+                  </button>
+                  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+                          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                          Kartı kaydetmek ister misiniz?
+                        </div>
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Hayır</button>
+                          <button type="button" class="btn btn-primary" *ngFor="let card of cards" (click)="addTo(card)">Evet</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>                  
             </div>
         </div>
     </div>

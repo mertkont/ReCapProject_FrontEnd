@@ -19,6 +19,8 @@
             <th>Günlük fiyat</th>
             <th>KDV'li fiyat</th>
             <th>Açıklama</th>
+            <th>Findex</th>
+            <th>Min findex</th>
             <th></th>
             <th></th>
             <th></th>
@@ -35,7 +37,9 @@
           <td>{{car.dailyPrice}}</td>
           <td>{{car.dailyPrice | vatAdded:18 | currency}}</td>
           <td>{{car.description}}</td>
-          <td><button (click)="addToCart(car)" type="button" class="btn btn-success btn-xs">Kirala</button></td>
+          <td>{{findex}}</td>
+          <td>200</td>
+          <td><button (click)="addToCart(car)" type="button" class="btn btn-success btn-xs" *ngIf="findex > 200">Kirala</button></td>
           <td>
             <div class="btn-group">
               <button type="button" class="btn btn-danger dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">Bilgiler</button>
